@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { API_URL } from "../config";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const users = fetch(`${API_URL}/users/`).then((res) => res.json());
 </script>

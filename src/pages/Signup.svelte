@@ -1,6 +1,6 @@
 <script>
-  import { API_URL } from "../config";
   import { navigate } from "svelte-routing";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   let name = "";
 
