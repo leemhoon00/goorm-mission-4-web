@@ -4,7 +4,7 @@
 </script>
 
 <header>
-  <h1>Hello Nest1</h1>
+  <h1>Hello Nest2</h1>
 </header>
 <main>
   <div>
