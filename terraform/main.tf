@@ -24,6 +24,18 @@ resource "aws_cloudfront_origin_access_control" "web" {
   signing_protocol                  = "sigv4"
 }
 
+resource "aws_route53_record" "root_domain" {
+  zone_id = var.zone_id
+  name    = var.domain
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.web.domain_name
+    zone_id                = aws_cloudfront_distribution.web.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_cloudfront_distribution" "web" {
 
   origin {
@@ -36,6 +48,8 @@ resource "aws_cloudfront_distribution" "web" {
   is_ipv6_enabled     = true
   comment             = "Some comment"
   default_root_object = "index.html"
+
+  aliases = [var.domain]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -64,7 +78,8 @@ resource "aws_cloudfront_distribution" "web" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = var.certificate_arn
+    ssl_support_method  = "sni-only"
   }
 
 }
