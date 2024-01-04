@@ -83,3 +83,7 @@ resource "aws_route53_record" "root_domain" {
     evaluate_target_health = false
   }
 }
+
+output "cloudfront_distribution_id" {
+  value = aws_cloudfront_distribution.web.id
+}
