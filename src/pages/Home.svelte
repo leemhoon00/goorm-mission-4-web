@@ -1,16 +1,15 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
-  import List from "./List.svelte";
+  import { link } from "svelte-spa-router";
 </script>
 
 <header>
-  <h1>Hello Nest2</h1>
+  <h1>Hello Nest3</h1>
 </header>
 <main>
   <div>
     <h2>회원 기능</h2>
-    <a href="/users/signup">회원 가입</a>
-    <a href="/users/list">회원 목록</a>
+    <a href="/users/signup" use:link>회원 가입</a>
+    <a href="/users/list" use:link>회원 목록</a>
   </div>
 </main>
 

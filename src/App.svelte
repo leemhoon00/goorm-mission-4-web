@@ -1,14 +1,14 @@
 <script>
-  import { Router, Route } from "svelte-routing";
+  import Router from "svelte-spa-router";
   import List from "./pages/List.svelte";
   import Home from "./pages/Home.svelte";
   import Signup from "./pages/Signup.svelte";
 
-  export let url = "";
+  const routes = {
+    "/": Home,
+    "/users/signup": Signup,
+    "/users/list": List,
+  };
 </script>
 
-<Router {url}>
-  <Route path="/"><Home /></Route>
-  <Route path="/users/signup" component={Signup}>회원 가입</Route>
-  <Route path="/users/list" component={List}>회원 목록</Route>
-</Router>
+<Router {routes} />

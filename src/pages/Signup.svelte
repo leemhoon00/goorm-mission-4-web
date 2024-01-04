@@ -1,5 +1,5 @@
 <script>
-  import { navigate } from "svelte-routing";
+  import { replace } from "svelte-spa-router";
   const API_URL = import.meta.env.VITE_API_URL;
 
   let name = "";
@@ -14,7 +14,7 @@
     });
     if (response.ok) {
       alert("회원가입 성공");
-      navigate("/");
+      replace("/");
     } else {
       alert("회원가입 실패");
     }
