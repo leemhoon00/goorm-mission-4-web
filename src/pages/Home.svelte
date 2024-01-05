@@ -1,5 +1,11 @@
 <script>
   import { link } from "svelte-spa-router";
+
+  async function healthCheck() {
+    const res = await fetch(`${API_URL}`);
+    const data = await res.text();
+    console.log(data);
+  }
 </script>
 
 <header>
@@ -12,6 +18,7 @@
     <a href="/users/list" use:link>회원 목록</a>
   </div>
 </main>
+<button on:click={healthCheck}>HealthCheck</button>
 
 <style>
   header {
