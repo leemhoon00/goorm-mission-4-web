@@ -1,6 +1,6 @@
 <script>
   import { link } from "svelte-spa-router";
-
+  const API_URL = import.meta.env.VITE_API_URL;
   async function healthCheck() {
     const res = await fetch(`${API_URL}`);
     const data = await res.text();
